@@ -1,26 +1,108 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800;900&display=swap");
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: #c0c0c0;
+    color: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #c0c0c0;
+    border-radius: 3px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .chrome-text {
+    background: linear-gradient(
+      135deg,
+      #c0c0c0 0%,
+      #ffffff 40%,
+      #a8a8a8 60%,
+      #e8e8e8 80%,
+      #c0c0c0 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .chrome-border {
+    border: 1px solid rgba(192, 192, 192, 0.3);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(192, 192, 192, 0.15);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm tracking-wider uppercase transition-all duration-300 rounded-none;
+    background: linear-gradient(
+      135deg,
+      #c0c0c0 0%,
+      #ffffff 40%,
+      #a8a8a8 60%,
+      #e8e8e8 80%,
+      #c0c0c0 100%
+    );
+    color: #0a0a0a;
+    background-size: 200% auto;
+  }
+
+  .btn-primary:hover {
+    background-position: right center;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(192, 192, 192, 0.3);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm tracking-wider uppercase transition-all duration-300 rounded-none;
+    background: transparent;
+    color: #c0c0c0;
+    border: 1px solid rgba(192, 192, 192, 0.5);
+  }
+
+  .btn-secondary:hover {
+    background: rgba(192, 192, 192, 0.1);
+    border-color: #c0c0c0;
+    transform: translateY(-2px);
+  }
+
+  .section-title {
+    @apply font-display text-5xl md:text-6xl lg:text-7xl tracking-wider uppercase;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.3em] uppercase;
+    color: #c0c0c0;
+  }
 }
