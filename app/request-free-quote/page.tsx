@@ -163,8 +163,8 @@ export default function RequestFreeQuotePage() {
                     >
                       <option value="" disabled selected>Select a range...</option>
                       <option value="Under $500">Under $500</option>
-                      <option value="$500 - $1,000">$500 – $1,000</option>
-                      <option value="$1,000 - $2,500">$1,000 – $2,500</option>
+                      <option value="$500 - $1,000">$500-$1,000</option>
+                      <option value="$1,000 - $2,500">$1,000-$2,500</option>
                       <option value="$2,500+">$2,500+</option>
                       <option value="Not Sure">Not Sure</option>
                     </select>
@@ -182,7 +182,7 @@ export default function RequestFreeQuotePage() {
                       <option value="" disabled selected>Select a timeline...</option>
                       <option value="ASAP">ASAP</option>
                       <option value="Within 1 month">Within 1 month</option>
-                      <option value="1-3 months">1–3 months</option>
+                      <option value="1-3 months">1-3 months</option>
                       <option value="3+ months">3+ months</option>
                       <option value="Flexible">Flexible</option>
                     </select>

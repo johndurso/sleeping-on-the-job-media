@@ -157,7 +157,7 @@ export default function HomePage() {
           <AnimatedSection className="text-center mb-16">
             <p className="eyebrow mb-4">What We Do</p>
             <h2 className="section-title chrome-text">Services</h2>
-            <p className="text-chrome-silver/60 mt-4 max-w-xl mx-auto">
+            <p className="text-chrome-silver/60 mt-4 max-w-2xl mx-auto">
               Tailored media solutions for businesses and performers who want to
               stand out.
             </p>
@@ -216,9 +216,8 @@ export default function HomePage() {
             <h2 className="section-title text-white">
               Featured <span className="chrome-text">Clients</span>
             </h2>
-            <p className="text-chrome-silver/60 mt-4 max-w-xl mx-auto">
-              Integral members of the community — local businesses and performers
-              we're proud to support.
+            <p className="text-chrome-silver/60 mt-4 max-w-2xl mx-auto">
+              Past clients who play pivotal roles in our community.
             </p>
           </AnimatedSection>
 

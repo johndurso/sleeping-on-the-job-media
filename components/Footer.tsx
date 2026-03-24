@@ -5,22 +5,18 @@ export default function Footer() {
   return (
     <footer className="bg-chrome-darkgray border-t border-chrome-silver/10">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Left Column */}
           <div>
             <div className="mb-4">
-              <span className="font-display text-2xl tracking-[0.15em] chrome-text block">
-                SLEEPING ON THE JOB
-              </span>
-              <span className="font-display text-2xl tracking-[0.15em] text-white block">
-                MEDIA
+              <span className="font-display text-xl tracking-[0.15em] chrome-text block">
+                SLEEPING ON THE JOB MEDIA
               </span>
             </div>
-            <p className="text-chrome-silver/70 text-sm leading-relaxed max-w-xs">
-              Detroit-based media company serving professionals, local businesses,
-               and performers with web design, social media management, and event 
-               photography. The most bang for your buck, because your vision 
-               deserves to be seen.
+            <p className="text-chrome-silver/70 text-sm leading-relaxed max-w-lg">
+               Detroit-based media company serving professionals, local businesses,
+               and performers with web design, social media management, and 
+               photography services.
             </p>
           </div>
 
