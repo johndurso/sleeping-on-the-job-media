@@ -18,8 +18,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["'Bebas Neue'", "cursive"],
+        display: ['var(--font-bebas)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
         "chrome-gradient":
