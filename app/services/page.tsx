@@ -1,5 +1,6 @@
 "use client";
 
+import { lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -11,6 +12,8 @@ import {
   Zap,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
+
+const PhotographyCoverage = lazy(() => import("@/components/PhotographyCoverage"));
 
 const webDesignSteps = [
   {
@@ -70,7 +73,6 @@ export default function ServicesPage() {
             </p>
           </AnimatedSection>
 
-          {/* Bundle Banner */}
           <AnimatedSection delay={0.2} className="mt-10">
             <div className="inline-flex items-center gap-3 glass-card px-6 py-4">
               <Zap size={18} className="text-chrome-silver" />
@@ -106,7 +108,6 @@ export default function ServicesPage() {
                 optimized for search engines.
               </p>
 
-              {/* Pricing */}
               <div className="glass-card p-6 mb-8">
                 <p className="eyebrow text-[10px] mb-3">Pricing</p>
                 <div className="flex items-end gap-2 mb-2">
@@ -120,16 +121,11 @@ export default function ServicesPage() {
               </div>
 
               <div className="flex gap-4">
-                <Link href="/contact" className="btn-secondary">
-                  Contact Us
-                </Link>
-                <Link href="/request-free-quote" className="btn-primary">
-                  Get a Free Quote
-                </Link>
+                <Link href="/contact" className="btn-secondary">Contact Us</Link>
+                <Link href="/request-free-quote" className="btn-primary">Get a Free Quote</Link>
               </div>
             </AnimatedSection>
 
-            {/* Process Steps */}
             <AnimatedSection direction="right" delay={0.2}>
               <p className="eyebrow mb-6">Our 7-Step Process</p>
               <div className="space-y-4">
@@ -146,12 +142,8 @@ export default function ServicesPage() {
                       {step.num}
                     </span>
                     <div>
-                      <h4 className="text-white font-semibold text-sm mb-1">
-                        {step.title}
-                      </h4>
-                      <p className="text-chrome-silver/60 text-xs leading-relaxed">
-                        {step.desc}
-                      </p>
+                      <h4 className="text-white font-semibold text-sm mb-1">{step.title}</h4>
+                      <p className="text-chrome-silver/60 text-xs leading-relaxed">{step.desc}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -178,16 +170,12 @@ export default function ServicesPage() {
                   "Additional posts available at extra cost",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-3">
-                    <Check
-                      size={16}
-                      className="text-chrome-silver flex-shrink-0 mt-0.5"
-                    />
+                    <Check size={16} className="text-chrome-silver flex-shrink-0 mt-0.5" />
                     <span className="text-chrome-silver/70 text-sm">{item}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Pricing */}
               <div className="glass-card p-6 mt-8 mb-8">
                 <p className="eyebrow text-[10px] mb-3">Pricing</p>
                 <div className="flex items-end gap-2 mb-2">
@@ -201,20 +189,12 @@ export default function ServicesPage() {
               </div>
 
               <div className="flex gap-4">
-                <Link href="/contact" className="btn-secondary">
-                  Contact Us
-                </Link>
-                <Link href="/request-free-quote" className="btn-primary">
-                  Get a Free Quote
-                </Link>
+                <Link href="/contact" className="btn-secondary">Contact Us</Link>
+                <Link href="/request-free-quote" className="btn-primary">Get a Free Quote</Link>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection
-              direction="right"
-              delay={0.15}
-              className="order-1 lg:order-2"
-            >
+            <AnimatedSection direction="right" delay={0.15} className="order-1 lg:order-2">
               <div className="text-chrome-silver mb-6">
                 <Share2 size={40} />
               </div>
@@ -223,16 +203,16 @@ export default function ServicesPage() {
                 Social Media <span className="chrome-text">Management</span>
               </h2>
               <p className="text-chrome-silver/70 leading-relaxed mb-4">
-                Your social media presence is often the first impression 
-                someone has of you. We make sure it's a great one. Effective social 
-                media management goes beyond just posting. It's about building a 
+                Your social media presence is often the first impression
+                someone has of you. We make sure it's a great one. Effective social
+                media management goes beyond just posting. It's about building a
                 community that genuinely cares about what you do.
               </p>
               <p className="text-chrome-silver/70 leading-relaxed">
-                We handle content creation, scheduling, community management, and 
-                strategy so your pages stay active, consistent, and growing while you 
-                focus on your work. Whether you're a performer building a fanbase or a 
-                business growing a customer base, we tailor every strategy to your 
+                We handle content creation, scheduling, community management, and
+                strategy so your pages stay active, consistent, and growing while you
+                focus on your work. Whether you're a performer building a fanbase or a
+                business growing a customer base, we tailor every strategy to your
                 unique voice and goals.
               </p>
             </AnimatedSection>
@@ -254,7 +234,7 @@ export default function ServicesPage() {
               </h2>
               <p className="text-chrome-silver/70 leading-relaxed mb-4">
                 Live moments deserve to be captured. Whether you&apos;re
-                performing stand-up comedy, playing a live set, or hosting 
+                performing stand-up comedy, playing a live set, or hosting
                 a pop-up event, we&apos;re there to document every moment.
               </p>
               <p className="text-chrome-silver/70 leading-relaxed mb-8">
@@ -264,7 +244,6 @@ export default function ServicesPage() {
                 price to use without watermarks.
               </p>
 
-              {/* Pricing */}
               <div className="glass-card p-6 mb-8">
                 <p className="eyebrow text-[10px] mb-4">Pricing</p>
                 <div className="space-y-3">
@@ -286,42 +265,24 @@ export default function ServicesPage() {
               </div>
 
               <div className="flex gap-4">
-                <Link href="/contact" className="btn-secondary">
-                  Contact Us
-                </Link>
-                <Link href="/request-free-quote" className="btn-primary">
-                  Get a Free Quote
-                </Link>
+                <Link href="/contact" className="btn-secondary">Contact Us</Link>
+                <Link href="/request-free-quote" className="btn-primary">Get a Free Quote</Link>
               </div>
             </AnimatedSection>
 
-            <AnimatedSection direction="right" delay={0.2}>
-              <p className="eyebrow mb-6">What We Cover</p>
+            {/* Lazy loaded — furthest below the fold, 6 animated cards */}
+            <Suspense fallback={
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { title: "Stand-Up Comedy", desc: "Every set, every laugh, every moment." },
-                  { title: "Live Music", desc: "The energy of the stage, captured." },
-                  { title: "Pop-Up Events", desc: "Documenting community in action." },
-                  { title: "Professional Headshots", desc: "For performers and professionals." },
-                  { title: "Sponsored Shows", desc: "Half-price watermark-free photos." },
-                  { title: "Custom Projects", desc: "Have something else in mind? Let's talk." },
-                ].map((item, i) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
-                    className="glass-card p-5"
-                  >
-                    <h4 className="text-white font-semibold text-sm mb-1">
-                      {item.title}
-                    </h4>
-                    <p className="text-chrome-silver/60 text-xs">{item.desc}</p>
-                  </motion.div>
+                {Array.from({ length: 6 }).map((_, i) => (
+                  <div key={i} className="glass-card p-5 animate-pulse">
+                    <div className="h-4 w-2/3 bg-chrome-silver/10 rounded mb-2" />
+                    <div className="h-3 w-full bg-chrome-silver/10 rounded" />
+                  </div>
                 ))}
               </div>
-            </AnimatedSection>
+            }>
+              <PhotographyCoverage />
+            </Suspense>
           </div>
         </div>
       </section>
@@ -330,16 +291,12 @@ export default function ServicesPage() {
       <section className="py-20 bg-chrome-black border-t border-chrome-silver/10">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
-            <h2 className="section-title chrome-text mb-4">
-              Ready to Start?
-            </h2>
+            <h2 className="section-title chrome-text mb-4">Ready to Start?</h2>
             <p className="text-chrome-silver/60 mb-8">
               Let&apos;s figure out what you need and make it happen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-secondary">
-                Contact Us
-              </Link>
+              <Link href="/contact" className="btn-secondary">Contact Us</Link>
               <Link href="/request-free-quote" className="btn-primary">
                 Request Free Quote
                 <ChevronRight size={16} />

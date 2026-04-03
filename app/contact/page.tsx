@@ -1,6 +1,7 @@
-import ContactSection from "@/components/ContactSection";
+import { lazy, Suspense } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
-import Link from "next/link";
+
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 export default function ContactPage() {
   return (
@@ -34,7 +35,10 @@ export default function ContactPage() {
           </AnimatedSection>
         </div>
       </section>
-      <ContactSection />
+
+      <Suspense fallback={null}>
+        <ContactSection />
+      </Suspense>
     </div>
   );
 }

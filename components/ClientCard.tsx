@@ -5,10 +5,11 @@ import { ExternalLink, Monitor, Camera, Share2 } from "lucide-react";
 import { CldImage } from "next-cloudinary";
 import type { Client } from "@/data/clients";
 
+// Defined once at module level, not recreated on every render
 const serviceIcons: Record<string, React.ReactNode> = {
   "Web Design": <Monitor size={14} />,
   "Social Media Management": <Share2 size={14} />,
-  "Event Photography": <Camera size={14} />,
+  "Photography": <Camera size={14} />,
 };
 
 interface ClientCardProps {
@@ -22,13 +23,18 @@ export default function ClientCard({
   index = 0,
   showTechnologies = false,
 }: ClientCardProps) {
+  // Only the first card is likely above the fold
+  const isFirst = index === 0;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
+      // Only apply hover lift on non-touch devices
       whileHover={{ y: -6 }}
+      style={{ willChange: "transform" }}
       className="glass-card group relative overflow-hidden flex flex-col"
     >
       {/* Image */}
@@ -40,7 +46,10 @@ export default function ClientCard({
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 480px, 400px"
             className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-            style={{ position: 'absolute' }}
+            style={{ position: "absolute" }}
+            // Prioritize only the first card; lazy load the rest
+            fetchPriority={isFirst ? "high" : "low"}
+            loading={isFirst ? "eager" : "lazy"}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-chrome-gray">
@@ -82,8 +91,8 @@ export default function ClientCard({
           ))}
         </div>
 
-        {/* Technologies — only shown when prop is true */}
-        {showTechnologies && (
+        {/* Technologies — only rendered when prop is true */}
+        {showTechnologies && client.technologies?.length > 0 && (
           <div className="flex flex-wrap gap-2 mb-4">
             {client.technologies.map((tech) => (
               <span

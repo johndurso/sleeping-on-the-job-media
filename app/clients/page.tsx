@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, lazy, Suspense } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getAllClients } from "@/data/clients";
 import { ExternalLink, Monitor, Share2, Camera, Star } from "lucide-react";
 import { CldImage } from "next-cloudinary";
+
+const EmptyState = lazy(() => import("@/components/EmptyState"));
 
 const allClients = getAllClients();
 const categories = ["All", ...Array.from(new Set(allClients.map((c) => c.category)))];
@@ -13,7 +15,7 @@ const categories = ["All", ...Array.from(new Set(allClients.map((c) => c.categor
 const serviceIcons: Record<string, React.ReactNode> = {
   "Web Design": <Monitor size={14} />,
   "Social Media Management": <Share2 size={14} />,
-  "Event Photography": <Camera size={14} />,
+  "Photography": <Camera size={14} />,
 };
 
 export default function ClientsPage() {
@@ -88,8 +90,9 @@ export default function ClientsPage() {
                   key={client.id}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
+                  // Only animate into view for cards beyond the first two
                   viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.6, delay: i * 0.05 }}
+                  transition={{ duration: 0.6, delay: i < 2 ? 0 : i * 0.05 }}
                   className="py-16 lg:py-20 first:pt-0 last:pb-0"
                 >
                   {/* Top meta row */}
@@ -113,13 +116,15 @@ export default function ClientsPage() {
                     {/* Left — Image */}
                     <div className="relative overflow-hidden aspect-[4/3] bg-chrome-gray">
                       {client.image ? (
-                        // eslint-disable-next-line @next/next/no-img-element
                         <CldImage
                           src={client.image}
                           alt={client.name}
-                          width={800}
-                          height={600}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 480px, 400px"
                           className="w-full h-full object-cover object-top"
+                          // Only eagerly load the first two images, lazy load the rest
+                          loading={i < 2 ? "eager" : "lazy"}
+                          fetchPriority={i === 0 ? "high" : "auto"}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-chrome-gray">
@@ -133,7 +138,6 @@ export default function ClientsPage() {
 
                     {/* Right — Details */}
                     <div className="flex flex-col gap-8">
-                      {/* Description */}
                       <div>
                         <p className="eyebrow text-[10px] mb-3">About</p>
                         <p className="text-chrome-silver/70 leading-relaxed">
@@ -141,7 +145,6 @@ export default function ClientsPage() {
                         </p>
                       </div>
 
-                      {/* Services */}
                       <div>
                         <p className="eyebrow text-[10px] mb-3">Services Provided</p>
                         <div className="flex flex-wrap gap-2">
@@ -157,7 +160,6 @@ export default function ClientsPage() {
                         </div>
                       </div>
 
-                      {/* Technologies */}
                       <div>
                         <p className="eyebrow text-[10px] mb-3">Technologies Used</p>
                         <div className="flex flex-wrap gap-2">
@@ -172,7 +174,6 @@ export default function ClientsPage() {
                         </div>
                       </div>
 
-                      {/* Link */}
                       {client.website && (
                         <div>
                           <a
@@ -194,9 +195,9 @@ export default function ClientsPage() {
           </AnimatePresence>
 
           {filtered.length === 0 && (
-            <div className="text-center py-20">
-              <p className="text-chrome-silver/40">No clients in this category yet.</p>
-            </div>
+            <Suspense fallback={null}>
+              <EmptyState message="No clients in this category yet." />
+            </Suspense>
           )}
         </div>
       </section>

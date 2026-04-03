@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, lazy, Suspense } from "react";
 import Link from "next/link";
 import {
   ArrowDown,
@@ -12,9 +12,12 @@ import {
   Star,
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
-import ClientCard from "@/components/ClientCard";
+
+// Lazy load below-the-fold components
+const ClientCard = lazy(() => import("@/components/ClientCard"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+
 import { getFeaturedClients } from "@/data/clients";
-import ContactSection from "@/components/ContactSection";
 
 const featuredClients = getFeaturedClients();
 
@@ -44,6 +47,21 @@ const services = [
     href: "/services#photography",
   },
 ];
+
+// Fallback card skeleton to prevent layout shift while ClientCards load
+function ClientCardSkeleton() {
+  return (
+    <div className="glass-card flex flex-col overflow-hidden animate-pulse">
+      <div className="h-52 bg-chrome-gray/40" />
+      <div className="p-6 flex flex-col gap-3">
+        <div className="h-3 w-1/3 bg-chrome-silver/10 rounded" />
+        <div className="h-6 w-2/3 bg-chrome-silver/10 rounded" />
+        <div className="h-4 w-full bg-chrome-silver/10 rounded" />
+        <div className="h-4 w-5/6 bg-chrome-silver/10 rounded" />
+      </div>
+    </div>
+  );
+}
 
 export default function HomePage() {
   const heroRef = useRef(null);
@@ -222,9 +240,17 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {featuredClients.map((client, i) => (
-              <ClientCard key={client.id} client={client} index={i} />
-            ))}
+            <Suspense fallback={
+              <>
+                <ClientCardSkeleton />
+                <ClientCardSkeleton />
+                <ClientCardSkeleton />
+              </>
+            }>
+              {featuredClients.map((client, i) => (
+                <ClientCard key={client.id} client={client} index={i} />
+              ))}
+            </Suspense>
           </div>
 
           <AnimatedSection className="text-center mt-12" delay={0.3}>
@@ -236,7 +262,9 @@ export default function HomePage() {
       </section>
 
       {/* ─── CONTACT SECTION ─── */}
-      <ContactSection />
+      <Suspense fallback={null}>
+        <ContactSection />
+      </Suspense>
     </>
   );
 }
