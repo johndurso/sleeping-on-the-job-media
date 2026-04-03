@@ -16,7 +16,7 @@ export const clients: Client[] = [
     id: "1",
     name: "Johanna Medranda",
     slug: "johanna-medranda",
-    image: "/clients/johanna-medranda.png",
+    image: "johanna-medranda-1",
     website: "https://johannamedranda.com",
     description:
       "Johanna is a Detroit-based comedian making a splash in the comedy world on a national level. She needed a website that matched her bold stage persona and could grow alongside her rising career.",
@@ -38,7 +38,7 @@ export const clients: Client[] = [
     id: "2",
     name: "Motor City Comedy Festival",
     slug: "motor-city-comedy-festival",
-    image: "/clients/mccf.jpg",
+    image: "mccf",
     website: "https://motorcitycomedyfestival.com",
     description:
       "Held in the booming city of Detroit, the Motor City Comedy Festival is the longest tenured comedy festival in the state of Michigan. We built them a brand new website and helped photograph two years of the festival.",
@@ -59,7 +59,7 @@ export const clients: Client[] = [
     id: "3",
     name: "Connor Meade",
     slug: "connor-meade",
-    image: "/clients/connor-meade.png",
+    image: "connor-meade",
     website: "https://connormeade.com",
     description:
       "Connor Meade is a Metro Detroit-based turned Brooklyn-based stand-up comedian. We built her website with a dynamic show spreadsheet that Connor can easily keep updated.",
@@ -70,14 +70,14 @@ export const clients: Client[] = [
         "Google API",
         "Vercel"
     ],
-    featured: true,
+    featured: false,
     category: "Performer",
   },
   {
     id: "4",
     name: "Priscilla Hankins",
     slug: "priscilla-hankins",
-    image: "/clients/priscilla-hankins.png",
+    image: "priscilla-hankins",
     website: "https://priscillahankins.com",
     description:
       "Priscilla Hankins is an End-of-Life Doula based in the Detroit area. We created a warm, professional website redesign that speaks to her compassionate practice.",
@@ -94,7 +94,7 @@ export const clients: Client[] = [
     id: "5",
     name: "Alice Duhon",
     slug: "alice-duhon",
-    image: "/clients/alice-duhon.png",
+    image: "alice-duhon",
     website: "https://aliceduhon.com",
     description:
       "Alice Duhon is a Chicago-based stand-up comedian, dancer, and retired theater kid. We handle her website.",
@@ -111,7 +111,7 @@ export const clients: Client[] = [
     id: "6",
     name: "Nic Gumina",
     slug: "nic-gumina",
-    image: "/clients/nic-gumina.jpg",
+    image: "nic-gumina-1",
     website: "https://nicgumina.com",
     description:
       "Nic Gumina is a Cloud Security Consultant who needed a professional website and a high-quality headshot to match.",
@@ -125,7 +125,7 @@ export const clients: Client[] = [
         "Framer",
         "Adobe Photoshop"
     ],
-    featured: false,
+    featured: true,
     category: "Professional",
   },
 ];

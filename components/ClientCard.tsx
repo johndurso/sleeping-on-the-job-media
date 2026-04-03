@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ExternalLink, Monitor, Camera, Share2 } from "lucide-react";
+import { CldImage } from "next-cloudinary";
 import type { Client } from "@/data/clients";
 
 const serviceIcons: Record<string, React.ReactNode> = {
@@ -33,11 +34,13 @@ export default function ClientCard({
       {/* Image */}
       <div className="relative h-52 bg-chrome-gray overflow-hidden">
         {client.image ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <CldImage
             src={client.image}
             alt={client.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            style={{ position: 'absolute' }}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center bg-chrome-gray">

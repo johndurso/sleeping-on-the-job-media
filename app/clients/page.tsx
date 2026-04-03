@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import { getAllClients } from "@/data/clients";
 import { ExternalLink, Monitor, Share2, Camera, Star } from "lucide-react";
+import { CldImage } from "next-cloudinary";
 
 const allClients = getAllClients();
 const categories = ["All", ...Array.from(new Set(allClients.map((c) => c.category)))];
@@ -113,10 +114,12 @@ export default function ClientsPage() {
                     <div className="relative overflow-hidden aspect-[4/3] bg-chrome-gray">
                       {client.image ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <CldImage
                           src={client.image}
                           alt={client.name}
-                          className="w-full h-full object-cover"
+                          width={800}
+                          height={600}
+                          className="w-full h-full object-cover object-top"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center bg-chrome-gray">
