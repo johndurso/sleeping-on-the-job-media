@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-import { Bebas_Neue, Inter } from 'next/font/google'
+import { Bebas_Neue, Inter } from 'next/font/google';
 
 const bebasNeue = Bebas_Neue({
   weight: '400',

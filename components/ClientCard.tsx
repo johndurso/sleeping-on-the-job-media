@@ -38,7 +38,7 @@ export default function ClientCard({
             src={client.image}
             alt={client.name}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 480px, 400px"
             className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
             style={{ position: 'absolute' }}
           />
