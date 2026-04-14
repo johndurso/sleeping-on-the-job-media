@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import AnimatedSection from "@/components/AnimatedSection";
 
-// Lazy load below-the-fold components
 const ClientCard = lazy(() => import("@/components/ClientCard"));
 const ContactSection = lazy(() => import("@/components/ContactSection"));
 
@@ -109,7 +108,7 @@ export default function HomePage() {
           }}
         />
 
-        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 text-center px-6 max-w-5xl mx-auto">
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-[120px]">
           {/* Eyebrow */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -125,11 +124,11 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="font-display text-[3rem] sm:text-[4rem] md:text-[6rem] lg:text-[8rem] leading-none tracking-wider mb-6"
+            className="font-display leading-none tracking-wider mb-6"
           >
-            <span className="chrome-text block">SLEEPING</span>
-            <span className="text-[6rem] sm:text-[8rem] md:text-[10rem] lg:text-[12rem] text-white block">ON THE JOB</span>
-            <span className="chrome-text block">MEDIA</span>
+            <span className="text-[3rem] sm:text-[3rem] md:text-[5rem] lg:text-[7rem] chrome-text block">SLEEPING</span>
+            <span className="text-[6rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] text-white block">ON THE JOB</span>
+            <span className="text-[3rem] sm:text-[3rem] md:text-[5rem] lg:text-[7rem] chrome-text block">MEDIA</span>
           </motion.h1>
 
           {/* Tagline */}
@@ -147,7 +146,7 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.9 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
           >
             <Link href="#services" className="btn-primary">
               What We Offer
